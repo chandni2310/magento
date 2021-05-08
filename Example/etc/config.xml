@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Ccc_Example>
+			<version>1.0.1</version>
+		</Ccc_Example>
+	</modules>
+
+	<global>
+
+		<models>
+	        <example>
+	            <class>Ccc_Example_Model</class>
+	            <resourceModel>example_resource</resourceModel>
+	        </example>
+
+	        <example_resource>
+	            <class>Ccc_Example_Model_Resource</class>
+	            <entities>
+	                <example>
+	                    <table>example</table>
+	                </example>
+	                <example_datetime>
+	                	<table>example_datetime</table>
+		            </example_datetime>
+		            <example_decimal>
+		                <table>example_decimal</table>
+		            </example_decimal>
+		            <example_int>
+		                <table>example_int</table>
+		            </example_int>
+		            <example_text>
+		                <table>example_text</table>
+		            </example_text>
+		            <example_varchar>
+		                <table>example_varchar</table>
+		            </example_varchar>
+		            <example_char>
+		                <table>example_char</table>
+		            </example_char>
+		            <eav_attribute>
+                        <table>example_eav_attribute</table>
+                    </eav_attribute>
+		        </entities>
+		    </example_resource>
+		</models>
+
+		<resources>
+            <example_setup>
+                <setup>
+                    <module>Ccc_Example</module>
+                    <class>Ccc_Example_Model_Resource_Setup</class>
+                </setup>
+            </example_setup>
+        </resources>
+
+		<helpers>
+			<example>
+				<class>Ccc_Example_Helper</class>
+			</example>
+		</helpers>
+
+		<blocks>
+			<example>
+				<class>Ccc_Example_Block</class>
+			</example>
+		</blocks>
+
+	</global>
+
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<ccc_example>Ccc_Example_Adminhtml</ccc_example>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+
+	<adminhtml>
+	    <layout>
+	      <updates>
+	        <example>
+	          <file>example.xml</file>
+	        </example>
+	      </updates>
+	    </layout>
+  	</adminhtml>
+
+</config>
