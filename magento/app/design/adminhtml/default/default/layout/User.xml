@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <user_adminhtml_user_index>
+        <reference name="content">
+            <block type="user/adminhtml_user" name="user" />
+        </reference>
+    </user_adminhtml_user_index>
+</layout>
