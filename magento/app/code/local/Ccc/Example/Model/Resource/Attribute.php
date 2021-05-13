@@ -24,7 +24,7 @@ class Ccc_Example_Model_Resource_Attribute extends Mage_Eav_Model_Resource_Entit
 
         if ($object->isScopeGlobal()
             && isset($origData['is_global'])
-            && Ccc_Exampleattribute_Model_Resource_Eav_Attribute::SCOPE_GLOBAL != $origData['is_global']
+            && Ccc_Example_Model_Resource_Eav_Attribute::SCOPE_GLOBAL != $origData['is_global']
         ) {
             $attributeStoreIds = array_keys(Mage::app()->getStores());
             if (!empty($attributeStoreIds)) {
@@ -53,7 +53,7 @@ class Ccc_Example_Model_Resource_Attribute extends Mage_Eav_Model_Resource_Entit
 
         if ($result) {
             $attribute = Mage::getSingleton('eav/config')
-                ->getAttribute(Ccc_Exampleattribute_Model_Resource_Exampleattribute::ENTITY, $result['attribute_id']);
+                ->getAttribute(Ccc_Example_Model_Resource_Example::ENTITY, $result['attribute_id']);
 
             $backendTable = $attribute->getBackend()->getTable();
             if ($backendTable) {
