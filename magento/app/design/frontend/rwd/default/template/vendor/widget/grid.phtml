@@ -1,0 +1,45 @@
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<div class="d-flex justify-content-end">
+    <a name="addbtn" id="addbtn" class="btn btn-primary mb-2" href="<?php echo $this->getAddButtonUrl() ?>" role="button"><?php echo $this->getAddButtonLabel() ?></a>
+</div>
+<?php echo $this->getPagerHtml(); ?>
+<table class="table table-responsive-lg">
+    <caption class="table-caption" style="caption-side: top;">
+        <h4><?php echo $this->getHeaderText() ?></h4>
+    </caption>
+    <?php if (count($this->getColumns())) : ?>
+        <tr>
+            <?php foreach ($this->getColumns() as $key => $col) : ?>
+                <?php if (array_key_exists('header', $col)) : ?>
+                    <th><?php echo $col['header'] ?></th>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <th>Action</th>
+        </tr>
+    <?php endif; ?>
+    <?php if (count($this->getCollection())) : ?>
+        <?php foreach ($this->getCollection() as $row) : ?>
+            <tr>
+                <?php if (is_array($this->getColumns())) : ?>
+                    <?php foreach ($this->getColumns() as $key => $col) : ?>
+                        <?php if (array_key_exists('index', $col)) : ?>
+                            <td><?php echo $this->getFieldValue($row, $col['index']) ?></td>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                <td colspan="2"><a href="<?= $this->getRowUrl($row) ?>">Edit</a>
+                    <a href="<?= $this->getDeleteRowUrl($row) ?>">Delete</a>
+                </td>
+
+            </tr>
+        <?php endforeach; ?>
+    <?php else : ?>
+        <tr>
+            <td colspan="<?php echo is_array($this->getColumns()) ? count($this->getColumns()) : 0 ?>">
+                <div class="alert alert-info">
+                    No Records in database
+                </div>
+            </td>
+        </tr>
+    <?php endif; ?>
+</table>
