@@ -3,6 +3,7 @@ $installer = $this;
 $installer->startSetup();
 
 $installer->run("
+DROP TABLE IF EXISTS `{$installer->getTable('vendor_form_attribute')}`;
 CREATE TABLE `{$installer->getTable('vendor/form_attribute')}` (
   `form_code` char(32) NOT NULL,
   `attribute_id` smallint UNSIGNED NOT NULL,
