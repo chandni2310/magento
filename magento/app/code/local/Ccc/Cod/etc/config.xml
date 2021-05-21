@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Ccc_Cod>
+			<version>1.0.0</version>
+		</Ccc_Cod>
+	</modules>
+
+	<global>
+		<fieldsets>
+	      <sales_convert_quote_payment>
+	        <custom_field_one>
+	          <to_order_payment>*</to_order_payment>
+	        </custom_field_one>
+	        <custom_field_two>
+	          <to_order_payment>*</to_order_payment>
+	        </custom_field_two>
+	      </sales_convert_quote_payment>
+    	</fieldsets>
+
+    	<helpers>
+	      <cod>
+	        <class>Ccc_Cod_Helper</class>
+	      </cod>
+    	</helpers>
+ 
+	    <blocks>
+	      <cod>
+	        <class>Ccc_Cod_Block</class>
+	      </cod>
+	    </blocks>
+         
+	    <models>
+	      <cod>
+	        <class>Ccc_Cod_Model</class>
+	      </cod>
+	    </models>
+
+	    <resources>
+	      <cod_setup>
+	        <setup>
+	          <module>Ccc_Cod</module>
+	        </setup>
+	      </cod_setup>
+    	</resources>
+	</global>
+
+	<default>
+	    <payment>
+	      <cod>
+	        <active>1</active>
+	        <model>cod/paymentmethod</model>
+	        <order_status>pending</order_status>
+	        <title>COD</title>
+	        <allowspecific>0</allowspecific>
+	        <payment_action>sale</payment_action>
+	      </cod>
+	    </payment>
+  </default>
+  <frontend>
+        <routers>
+            <cod>
+                <use>standard</use>
+                <args>
+                    <module>Ccc_Cod</module>
+                    <frontname>cod</frontname>
+                </args>
+            </cod>
+        </routers>
+    </frontend>
+</config>
