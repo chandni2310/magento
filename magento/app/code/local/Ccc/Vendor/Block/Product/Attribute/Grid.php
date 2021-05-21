@@ -1,6 +1,16 @@
 <?php
-class Ccc_Vendor_Block_Account_Product_Attribute_Grid extends Mage_Core_Block_Template
+class Ccc_Vendor_Block_Product_Attribute_Grid extends Mage_Core_Block_Template
 {
+     protected function _getSession()
+    {
+        return Mage::getSingleton('vendor/session');
+    }
+
+    public function getVendor()
+    {
+        return $this->_getSession()->getVendor();
+    }
+
     protected function getAttributes()
     {
         $vendorId = $this->_getSession()->getVendor()->getId();
@@ -30,16 +40,7 @@ class Ccc_Vendor_Block_Account_Product_Attribute_Grid extends Mage_Core_Block_Te
         return $this->getUrl('*/*/new');
     }
 
-    protected function _getSession()
-    {
-        return Mage::getSingleton('vendor/session');
-    }
-
-    public function getVendor()
-    {
-        return $this->_getSession()->getVendor();
-    }
-
+   
     public function getEditUrl()
     {
         return $this->getUrl('*/*/edit');

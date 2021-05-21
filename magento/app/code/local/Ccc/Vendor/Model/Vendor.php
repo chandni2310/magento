@@ -19,6 +19,13 @@ class Ccc_Vendor_Model_Vendor extends Mage_Core_Model_Abstract
     const XML_PATH_CHANGED_PASSWORD_OR_EMAIL_TEMPLATE = 'vendor/changed_account/password_or_email_template';
     const XML_PATH_CHANGED_PASSWORD_OR_EMAIL_IDENTITY = 'vendor/changed_account/password_or_email_identity';
 
+    const XML_PATH_REGISTER_EMAIL_IDENTITY = 'vendor/create_account/email_identity';
+    const XML_PATH_REMIND_EMAIL_TEMPLATE = 'vendor/password/remind_email_template';
+    const XML_PATH_FORGOT_EMAIL_TEMPLATE = 'vendor/password/forgot_email_template';
+    const XML_PATH_FORGOT_EMAIL_IDENTITY = 'vendor/password/forgot_email_identity';
+    const XML_PATH_DEFAULT_EMAIL_DOMAIN         = 'vendor/create_account/email_domain';
+    const XML_PATH_GENERATE_HUMAN_FRIENDLY_ID   = 'vendor/create_account/generate_human_friendly_id';
+
 
 
     protected function _construct()
@@ -228,9 +235,9 @@ class Ccc_Vendor_Model_Vendor extends Mage_Core_Model_Abstract
 
      protected function _sendEmailTemplate($template, $sender, $templateParams = array(), $storeId = null, $vendorEmail = null)
     {
-        $vendorEmail = ($vendorEmail) ? $vendorEmail : $this->getEmail();
+        //$vendorEmail = ($vendorEmail) ? $vendorEmail : $this->getEmail();
         /** @var $mailer Mage_Core_Model_Email_Template_Mailer */
-        $mailer = Mage::getModel('core/email_template_mailer');
+        /*$mailer = Mage::getModel('core/email_template_mailer');
         $emailInfo = Mage::getModel('core/email_info');
         $emailInfo->addTo($vendorEmail, $this->getName());
         $mailer->addEmailInfo($emailInfo);
@@ -241,7 +248,8 @@ class Ccc_Vendor_Model_Vendor extends Mage_Core_Model_Abstract
         $mailer->setTemplateId(Mage::getStoreConfig($template, $storeId));
         $mailer->setTemplateParams($templateParams);
         $mailer->send();
-        return $this;
+        return $this;*/
+
     }
 
     public function cleanPasswordsValidationData()

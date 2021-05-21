@@ -88,6 +88,11 @@ class Ccc_Vendor_Helper_Data extends Mage_Core_Helper_Abstract {
         return Mage::getUrl('vendor/group/');
     }
 
+     public function getAttributeManageUrl()
+    {
+        return Mage::getUrl('vendor/attribute/');
+    }
+
 
 
 	

@@ -11,6 +11,11 @@ class Ccc_Vendor_Block_Menu extends Mage_Core_Block_Template{
     {
         return Mage::helper('vendor')->getGroupManageUrl();
     }
+
+    public function getAttributeManageUrl()
+    {
+        return Mage::helper('vendor')->getAttributeManageUrl();
+    }
 }
 
 ?>

@@ -87,9 +87,9 @@ class Ccc_Vendor_AccountController extends Mage_Core_Controller_Front_Action{
                         echo $this->_welcomeVendor($session->getVendor(), true);
                     }
                 } catch (Mage_Core_Exception $e) {
-                    echo '<pre>';
+                   /* echo '<pre>';
                     print_r($e);
-                    die();
+                    die();*/
                     switch ($e->getCode()) {
                         case Ccc_Vendor_Model_Vendor::EXCEPTION_EMAIL_NOT_CONFIRMED:
                             $value = $this->_getHelper('vendor')->getEmailConfirmationUrl($login['username']);
@@ -104,9 +104,9 @@ class Ccc_Vendor_AccountController extends Mage_Core_Controller_Front_Action{
                     $session->addError($message);
                     $session->setUsername($login['username']);
                 } catch (Exception $e) {
-                     echo '<pre>';
+                    /* echo '<pre>';
                     print_r($e);
-                    die();
+                    die();*/
                     // Mage::logException($e); // PA DSS violation: this exception log can disclose customer password
                 }
             } else {
@@ -203,6 +203,10 @@ class Ccc_Vendor_AccountController extends Mage_Core_Controller_Front_Action{
                 ->setEmail($postData['email'])
                 ->setPasswordHash(md5($postData['password']))
                 ->save();
+        //$this->_dispatchRegisterSuccess($vendor);
+        $this->_successProcessRegistration($vendor);
+        $this->_redirect('*/*/index');
+
 
        
         /*try {
@@ -231,7 +235,33 @@ class Ccc_Vendor_AccountController extends Mage_Core_Controller_Front_Action{
             $session->addException($e, $this->__('Cannot save the customer.'));
         }*/
 
-        $this->_redirectError($errUrl);
+        //$this->_redirectError($errUrl);
+    }
+
+     protected function _successProcessRegistration(Ccc_Vendor_Model_Vendor $vendor)
+    {
+        $session = $this->_getSession();
+        if ($vendor->isConfirmationRequired()) {
+            /** @var $app Mage_Core_Model_App */
+            $app = $this->_getApp();
+            /** @var $store  Mage_Core_Model_Store*/
+            $store = $app->getStore();
+            $vendor->sendNewAccountEmail(
+                'confirmation',
+                $session->getBeforeAuthUrl(),
+                $store->getId(),
+                $this->getRequest()->getPost('password')
+            );
+            $vendorHelper = $this->_getHelper('vendor');
+            $session->addSuccess($this->__('Account confirmation is required. Please, check your email for the confirmation link. To resend the confirmation email please <a href="%s">click here</a>.',
+                $vendorHelper->getEmailConfirmationUrl($vendor->getEmail())));
+            $url = $this->_getUrl('*/*/index', array('_secure' => true));
+        } else {
+            $session->setVendorAsLoggedIn($vendor);
+            $url = $this->_welcomeVendor($vendor);
+        }
+        $this->_redirectSuccess($url);
+        return $this;
     }
 
     protected function _getVendor()
@@ -277,7 +307,7 @@ class Ccc_Vendor_AccountController extends Mage_Core_Controller_Front_Action{
             $this->_getSession()->addSuccess($userPrompt);
         }
 */
-        $customer->sendNewAccountEmail(
+        $vendor->sendNewAccountEmail(
             $isJustConfirmed ? 'confirmed' : 'registered',
             '',
             Mage::app()->getStore()->getId(),
@@ -290,6 +320,13 @@ class Ccc_Vendor_AccountController extends Mage_Core_Controller_Front_Action{
         }
         return $successUrl;
     }
+
+   /*  protected function _dispatchRegisterSuccess($vendor)
+    {
+        Mage::dispatchEvent('vendor_register_success',
+            array('account_controller' => $this, 'vendor' => $vendor)
+        );
+    }*/
 
     protected function _isVatValidationEnabled($store = null)
     {
