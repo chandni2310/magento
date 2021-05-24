@@ -444,6 +444,7 @@ class Ccc_Vendor_AccountController extends Mage_Core_Controller_Front_Action{
                 $postData = $this->getRequest()->getPost();
                
                 $vendor->setFirstname($postData['firstname'])
+                ->setEmail($postData['email'])
                 ->setMiddlename($postData['middlename'])
                 ->setLastname($postData['lastname']);
                 $vendor->save();
