@@ -1,0 +1,29 @@
+<?php 
+$shippingMethod = $this->getOrder()->getShippingMethod();
+?>
+    <div id="order-shipping_method" class="box-right">
+        <div>
+            <div class="entry-edit">
+                <div class="entry-edit-head">
+                    <h4 class="fieldset-legend head-shipping-method icon-head" >Shipping Method</h4>
+                </div>
+                <div class="fieldset">
+                    <div id="order-shipping-method-choose">
+                        <dl class="shipping-methods">
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <label class="normal">
+                                            <?php echo $shippingMethod; ?>
+                                        </label>
+
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

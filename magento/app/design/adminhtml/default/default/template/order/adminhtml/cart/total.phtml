@@ -1,0 +1,37 @@
+<?php
+//echo 'hello';
+$baseTotal = $this->getBaseTotal();
+$shippingAmount = $this->getShippingAmount();
+$grandTotal = $this->getGrandTotal();
+
+
+?>
+<div class=" entry-edit">
+    <div class="entry-edit-head">
+        <h4>Cart Total</h4>
+    </div>
+    <div id="order-totals" class="order-totals">
+        <table cellspacing="0" cellpadding="10" >
+            <tbody>
+                <tr>
+                    <td>Base Total</td>
+                    <td>
+                        <span class="price"> <?php echo $baseTotal;?> Rs</span>    
+                    </td>
+                </tr>
+                <tr>
+                    <td>Shipping Amount</td>
+                    <td>
+                        <span class="price"><?php echo $shippingAmount;?> Rs</span>    
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong><b>Grand Total</b></strong></td>
+                    <td>
+                        <strong><span class="price"><?php echo $grandTotal ;?> Rs</span></strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

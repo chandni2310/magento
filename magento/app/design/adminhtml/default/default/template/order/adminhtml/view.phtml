@@ -1,0 +1,18 @@
+<?php $order = $this->getOrder()?>
+<h3 class="icon-head head-sales-order">Order Details</h3>
+<div style="float:right; ">
+	<a href="<?php echo $this->getUrl('order/adminhtml_order/index'); ?>">
+    <button type="button" class="scalable back"><span>Back</span></button></a>
+ </div>
+ <?php echo $this->getChild('account')->setOrder($order)->toHtml() ?>
+ <?php echo $this->getChild('items')->setOrder($order)->toHtml() ?>
+ <?php echo $this->getChild('shipping_address')->setOrder($order)->toHtml() ?>
+ <?php echo $this->getChild('billing_address')->setOrder($order)->toHtml() ?>
+ <?php echo $this->getChild('payment_method')->setOrder($order)->toHtml() ?>
+ <?php echo $this->getChild('shipping_method')->setOrder($order)->toHtml() ?>
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <?php echo $this->getChild('total')->setOrder($order)->toHtml() ?>
+
+
+
+

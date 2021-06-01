@@ -1,0 +1,58 @@
+<?php $shippingAddress = $this->getOrder()->getShippingAddress();?>
+    <div id="order-shipping_address" class="box-right">
+        <div class="entry-edit" style="position: relative;">
+            <div class="entry-edit-head">
+                <h4 class="icon-head fieldset-legend head-shipping-address">Shipping Address</h4>   
+            </div>
+            <fieldset class="np">
+                <div id="shippingaddress" style="display:block">
+                <div class="order-address" id="order-shipping_address_fields">
+                    <div class="content">
+                        <div class="hor-scroll">
+                            <table cellspacing="0" class="form-list">
+                                <tbody>
+                                    <tr>
+                                        <td class="label"><label>Street</label></td>
+                                        <td class="value">
+                                            <div><input name="shipping[street]" value="<?php echo $shippingAddress['street']; ?>" type="text" readonly>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label"><label>Zip Code</label></td>
+                                        <td class="value">
+                                            <input name="shipping[postcode]"
+                                                value="<?php echo $shippingAddress['postcode']; ?>" type="number" readonly>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label"><label>State </label></td>
+                                        <td class="value">
+                                            <input name="shipping[region]" value="<?php echo $shippingAddress['region']; ?>" type="text" readonly>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label"><label>City </label></td>
+                                        <td class="value">
+                                            <input name="shipping[city]" value="<?php echo $shippingAddress['city']; ?>" type="text" readonly>
+                                        </td>
+                                    </tr>
+                                   
+                                    <tr>
+                                        <td class="label"><label>Country</label>
+                                        </td>
+                                        <td class="value">
+                                            <input name="shipping[country_id]"
+                                                value="<?php echo $shippingAddress['country_id']; ?>" type="text" readonly>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</form>

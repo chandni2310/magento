@@ -1,0 +1,25 @@
+<?php 
+$customers = $this->getCustomer()->getData();
+$selectedCustomer = $this->getSelectedCustomer();
+/*echo '<pre>';
+print_r($customers);*/
+?>
+
+<div class="entry-edit">
+    <form action="<?php echo $this->getUrl('*/adminhtml_order/selectCustomer'); ?>" method="POST" id='customer_form'>
+        <?php echo $this->getBlockHtml('formkey');?>
+                <div class="entry-edit-head"><h4>Select Customer</h4></div>
+                <fieldset class="a-center bold">
+                    <span class="nowrap" style="font-size:18px;">
+                        <label>Choose Customer:</label>
+                    	<select name="customer_id" style="width:150px;height:30px">
+                			<option>Select Customer</option>
+                            <?php foreach ($customers as $customer) : ?>
+                            <option <?php if($customer['entity_id'] ==$selectedCustomer){echo 'selected';};?> value="<?php  echo $customer[entity_id] ?>"><?= "$customer[firstname]" ?></option>
+                            <?php endforeach; ?>                    		
+                    	</select>
+                    </span>
+                    <button type="submit" class="button" title="SAVE" style="width:80px;height:25px">SAVE</button>
+                </fieldset>
+            </form>
+</div>

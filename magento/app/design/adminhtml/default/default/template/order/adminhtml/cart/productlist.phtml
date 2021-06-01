@@ -1,0 +1,54 @@
+<?php
+$customerId = Mage::getSingleton('order/session')->getCustomerId();
+$products = $this->getProducts()->getData();
+/*echo $customerId;
+die();*/
+
+ ?>
+<div class="entry-edit">
+    <form action="<?php echo $this->getUrl('*/adminhtml_order/addToCart'); ?>" method="POST" id='cart_form'>
+        <?php echo $this->getBlockHtml('formkey');?>
+                <div class="entry-edit-head"><h4>Add Products</h4></div>
+                <fieldset class="a-center bold">
+                    <span class="nowrap" style="font-size:18px;">
+                        <center>
+                            <table class="data-table" border="1"  id="productTable" style="">
+                                <?php if($customerId):?>
+                                    <thead>
+                                        <tr>
+                                            <th><h4>ID</h4></th>
+                                            <th><h4>Name</h4></th>
+                                            <th><h4>SKU</h4></th>
+                                            <th><h4>Price</h4></th>
+                                            <th><h4>Select</h4></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody border="1px solid black">
+                                       <?php foreach ($products as $product): ?>
+                                    <tr>
+                                        <td><?php echo $product['entity_id']; ?>&nbsp;</td>
+                                        <td><?php echo $product['name']; ?>&nbsp;</td>
+                                        <td><?php echo $product['sku']; ?>&nbsp;</td>
+                                        <td><?php echo $product['price']; ?></td>
+                                        <td><input type="checkbox" id="myCheckbox" name="product[<?php echo $product['entity_id']; ?>]" ></td>
+                                    </tr>
+                                    <?php endforeach;?>
+                                    <?php else:?>
+                                    <tr>
+                                <td>Please Select Customer...</td>
+        
+                            </tr>
+                            <?php endif;?>
+                        </tbody>
+                                
+                            </table>
+                        </center>
+                        
+                    	
+                    </span>
+                    <?php if($customerId):?>
+                    <button type="submit" class="button" title="Add to Cart" style="width:80px;height:25px">Add to Cart</button>
+                <?php endif;?>
+                </fieldset>
+            </form>
+</div>

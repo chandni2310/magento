@@ -1,0 +1,33 @@
+<?php $customer = $this->getOrder()->getCustomer();
+/*echo '<pre>';
+print_r($customer);
+die;*/
+?>
+<div id="order-form_account">
+	<div class="entry-edit">
+    	<div class="entry-edit-head">
+        	<h4 class="icon-head fieldset-legend head-account"> Customer Account Details</h4>
+    	</div>
+	    <div>
+	        <div class="fieldset " id="main">
+				<div class="hor-scroll">
+	                <table cellspacing="0" class="form-list">      				
+						<tr>
+    						<td class="label"><label for="name">Name</label></td>
+							<td class="value">
+    							<input type="text" id="email" name="name" value="<?php echo $customer->firstname.' '.$customer->lastname?>" readonly >   
+    						</td>
+						</tr>
+						<tr>
+    						<td class="label"><label for="email">Email</label></td>
+							<td class="value">
+    							<input type="text" id="email" name="email" value="<?php echo $customer->email; ?>" readonly>            
+    						</td>
+						</tr>
+	    			</table>
+	        	</div>
+	    	</div>
+	    </div>
+    
+	</div>
+</div>

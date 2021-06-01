@@ -1,0 +1,20 @@
+<?php $cart = $this->getCart();?>
+<div style="float: right;">
+  <a href="<?php echo Mage::helper('adminhtml')->getUrl('*/*/placeOrder'); ?>"><button type="button" name="placeOrder">Place Order</button></a>    
+</div>
+<h3 class="icon-head head-sales-order">Orders</h3>
+	<?php echo $this->getBlockHtml('formkey');  ?>
+
+	<?php echo $this->getChildHtml('customer');?>
+    <?php echo $this->getChildHtml('account');?>
+    <?php echo $this->getChild('billing_address')->setCart($cart)->toHtml();?>
+    <?php echo $this->getChild('shipping_address')->setCart($cart)->toHtml();?>
+    <?php echo $this->getChildHtml('product');?>
+    <?php echo $this->getChild('items')->setCart($cart)->toHtml();?>
+    <?php echo $this->getChildHtml('payment_method');?>
+    <?php echo $this->getChildHtml('shipping_method');?>
+    <?php echo '<br> <br><br><br><br><br><br><br><br><br>'?>
+    <?php echo $this->getChildHtml('total');?>
+
+
+	

@@ -1,0 +1,25 @@
+<?php $paymentMethod = $this->getOrder()->getPaymentMethod() ;?>
+<div id="order-methods">
+        <div id="order-billing_method" class="box-left">
+            <div>
+                <div class="entry-edit">
+                    <div class="entry-edit-head">
+                            <h4 class="fieldset-legend head-payment-method icon-head">Payment Method</h4>
+                        </div>
+                    </div>
+                    <div class="fieldset">
+                        <div id="order-shipping-method-choose" style="height: 30px">
+                            <dl class="payment-methods">
+                                    <dt>
+                                        <label class="normal"><b><?php echo $paymentMethod;?></b></label>
+                                    </dt>
+                                
+                            </dl>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
