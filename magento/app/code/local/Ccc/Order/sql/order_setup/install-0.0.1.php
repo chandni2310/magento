@@ -1,6 +1,17 @@
 <?php
 $installer = $this;
 $installer->startSetup();
+$installer->run("
+
+-- DROP TABLE IF EXISTS {$this->getTable('order/order')};
+-- DROP TABLE IF EXISTS {$this->getTable('order/order_item')};
+-- DROP TABLE IF EXISTS {$this->getTable('order/order_address')};
+-- DROP TABLE IF EXISTS {$this->getTable('order/cart')};
+-- DROP TABLE IF EXISTS {$this->getTable('order/cart_item')};
+-- DROP TABLE IF EXISTS {$this->getTable('order/cart_address')};
+
+
+");
 $tableName = $installer->getTable('order/order');
 $table = $installer->getConnection()
     ->newTable($tableName)
