@@ -1,6 +1,11 @@
 <?php
 $installer = $this;
 $installer->startSetup();
+$installer->run("
+
+-- DROP TABLE IF EXISTS {$this->getTable('order_address')};
+-- DROP TABLE IF EXISTS {$this->getTable('order_item')};
+");
 $tableName = $installer->getTable('order/order_address');
 $table = $installer->getConnection()
     ->newTable($tableName)
