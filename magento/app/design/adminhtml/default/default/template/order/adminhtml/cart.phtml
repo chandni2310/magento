@@ -2,6 +2,10 @@
 <div style="float: right;">
   <a href="<?php echo Mage::helper('adminhtml')->getUrl('*/*/placeOrder'); ?>"><button type="button" name="placeOrder">Place Order</button></a>    
 </div>
+<div style="float:right; ">
+    <a href="<?php  echo Mage::helper('adminhtml')->getUrl('order/adminhtml_order/resetCustomer'); ?>">
+    <button type="button" class="scalable back"><span>Back</span></button></a>
+ </div>
 <h3 class="icon-head head-sales-order">Orders</h3>
 	<?php echo $this->getBlockHtml('formkey');  ?>
 

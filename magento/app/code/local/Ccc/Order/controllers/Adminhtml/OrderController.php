@@ -38,6 +38,13 @@ class Ccc_Order_Adminhtml_OrderController extends Mage_Adminhtml_Controller_Acti
 		}
 	}
 
+    public function resetCustomerAction(){
+        /*echo 'hello';
+        die();*/
+         Mage::getSingleton('order/session')->unsCustomerId();
+         $this->_redirect('*/adminhtml_order/index');
+    }
+
 	protected function getCart($customerId = null){
 		$session = Mage::getSingleton('order/session');
 		/*echo '<pre>';
